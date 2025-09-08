@@ -1,0 +1,15 @@
+services:
+  - type: pserv        # private service, bisa jadi "pserv" untuk TCP
+    name: mining-proxy
+    env: docker
+    plan: starter      # bisa eco/starter sesuai budget
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: LISTEN_PORT
+        value: "3333"
+      - key: REMOTE_POOL
+        value: "minotaurx.na.mine.zpool.ca:7019"
+    ports:
+      - port: 3333
+        protocol: tcp
